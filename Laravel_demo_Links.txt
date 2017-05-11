@@ -8,3 +8,6 @@ Craete ecommerce website in laravel
 
 Backpack Admin
 -- https://backpackforlaravel.com/
+
+package list
+--https://packalyst.com
