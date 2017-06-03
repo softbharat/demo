@@ -1,0 +1,246 @@
+
+	'1' . 'create controller and add the below class';
+	use Illuminate\Support\Facades\DB;
+
+	
+	
+	/**
+	 * SQL QUERY IN LARAVEL
+	 * */
+
+	echo 'SELECT STATEMENT';
+	//$users = DB::select('select * from icon_users where user_std_id=?',[1]);
+	$users = DB::select('select * from icon_users where user_std_id=:std_id',['std_id'=>1]);
+	foreach ($users as $name){
+		echo '<br>'.$name->user_name;
+	}
+
+
+	echo '<br>'.'INSERT STATEMENT';
+	$insert = DB::insert('INSERT INTO icon_users
+	(user_name,user_password,user_email,user_regdate,user_ip,user_firstname,user_lastname)
+	VALUES (?,?,?,?,?,?,?)
+	',
+		
+		['test889','8787878787','test@ma.com','2017','10.10.10.25','TESTA','TESTE']
+	);
+	
+	if($insert){
+		echo 'success';
+	}
+
+	
+	echo '<br>'.'UPDATE STATEMENT';
+	/*    $update = DB::update("UPDATE icon_users SET user_firstname='MOHAN',user_lastname='Sohan'
+	where user_name = ?",['test889'] );*/
+	$update = DB::update("UPDATE icon_users SET user_firstname=?,user_lastname = ? 
+	where user_name = ?",['MOHAN','Sohan','test889'] );
+	
+	if($update){
+		echo 'success';
+	}
+
+
+	echo '<br>'.'DEL STATEMENT';
+	$del = true;
+	$del = DB::delete("DELETE FROM icon_users where user_name = ?",['test889'] );
+	
+	if($del){
+		echo 'success';
+	}
+
+	echo 'raw query';
+	
+	$users = DB::select( DB::raw('select * from icon_users where user_std_id=1') );
+	foreach ($users as $name){
+		echo '<br>'.$name->user_name;
+	}
+
+
+	
+	/**
+	 * SQL QUERY USING QUERY BUILDER IN LARAVEL
+	 * AND ALWYS USE get() after apply constraint on query
+	 * */
+		
+	
+
+	echo '<br/>SELECT STATEMENT';
+	
+	$users = DB::table('icon_users')->select('*')->where('user_std_id',1)->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->user_name;
+	}
+	
+	echo '<br/>SELECT FIRST ROW';
+	
+	$users = DB::table('icon_users')->select('*')->first();
+	echo '<br>'.$name->user_name;
+	
+	echo '<br/><br/><br/><br/>SELECT NAME ALIAS';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')->where('user_std_id',1)->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	
+	echo '<br/><br/><br/><br/>SELECT MULTIPLE WHERE';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')
+		->where('user_std_id',1)
+		->where('user_division_id',2)
+		->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	echo '<br/><br/><br/><br/>SELECT MULTIPLE WHERE OR';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')
+		->where('user_std_id',1)
+		->orwhere('user_division_id',2)
+		->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	echo '<br/><br/><br/><br/>SELECT ORDER BY';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')
+		->where('user_std_id',1)
+		->orderby('user_name','DESC')
+		->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	echo '<br/><br/><br/><br/>SELECT LIKE';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')
+		->where('user_name', 'LIKE','%teacher%')
+		->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	
+	echo '<br/><br/><br/><br/>SELECT ORDER BY AND LIMIT';
+	$users = DB::table('icon_users')->select('user_name as fullname','user_email as mail')
+		->where('user_std_id',1)
+		->orderby('user_name','DESC')
+		->limit('1')
+		->offset('0')
+		->get();
+	foreach ($users as $name){
+		echo '<br>'.$name->fullname . '- '.$name->mail;
+	}
+	
+	echo '<br/><br/><br/><br/>SELECT counT';
+	echo ' total' . $users = DB::table('icon_users')->where('user_std_id',1)->count();
+
+	echo '<br>'.'INSERT STATEMENT';
+	$insert_id = DB::table('icon_users')->insertGetId(
+		['user_name'=>'vest895896','user_password'=>'8787878787','user_email'=>'test@ma.com','user_regdate'=>'2017','user_ip'=>'10.10.10.25','user_firstname'=>'TESTA','user_lastname'=>'TESTE']
+	);
+	if($insert_id){
+		echo 'success';
+	}
+
+
+	echo '<br>'.'UPDATE STATEMENT'.$insert_id;
+	
+	$update = DB::table('icon_users')->where('user_id',$insert_id)->update(
+		['user_name'=>rand(1,8).'45895896','user_password'=>'222225151212']
+	);
+	
+	if($update){
+		echo 'success';
+	}
+	
+	echo '<br>'.'DELETE STATEMENT';
+	$dpdate = DB::table('icon_users')->where('user_id',$insert_id)->delete();
+	
+	if($dpdate){
+		echo 'success';
+	}
+
+	echo '<br/><br/><br/><br/>SELECT JOIN';
+
+	$users = DB::table('icon_users')
+		->leftjoin('icon_tests','icon_tests.test_user_id','=','icon_users.user_id')
+		->limit('5')
+		->get();
+	
+	foreach ($users as $name){
+		echo '<br>'.$name->user_name . '- '.$name->user_email;
+	}
+
+
+	/**
+	 * SQL QUERY USING ELEQOUNT IN LARAVEL
+	 * */
+
+
+	'1' . 'create Model';
+	'2' . 'add Model in controller';
+
+	1 class Profile extends Model
+	{
+		protected $table = 'icon_users';
+		protected $primaryKey = 'user_id';
+		protected $fillable = ['user_name','user_password','user_email','user_regdate','user_ip','user_firstname','user_lastname'];
+		public $timestamps = false;
+		
+	}
+
+	2 use App\Profile;
+	
+	 echo '<br/>SELECT STATEMENT';
+	// $users = DB::table('icon_users')->select('*')->paginate();
+	//$flights = \App\Profile::paginate('5');
+	
+	$users = Profile::find(1);
+	echo '<br/>single record' .$users->user_name . '-'.$users->user_email;
+	 echo '<br/>Multiple record';
+	//$users = Profile::where('user_id','<','5')->get();
+	//$users = Profile::where('user_id','<','5')->get();
+	//$users = Profile::where('user_id','<','6')->orderBy('user_name','desc')->get();
+	// $users = Profile::where('user_id','<','6')->orderBy('user_name','desc')->limit('2')->get();
+    $users = Profile::find([1,3,5,7]);
+	
+    foreach ($users as $flight) {
+	    echo '<br/>'. $flight->user_name;
+    }
+    
+    
+     echo '<br/> INSERTED ';
+    $users = new Profile();
+    $users->user_name = 'terwst89';
+    $users->user_password = '78545121';
+    $users->user_email ='test882@ma.com' ;
+    $users->user_regdate ='2017' ;
+    $users->user_ip ='10.10.10.29' ;
+    $users->user_firstname = 'TESTWEA';
+    $users->user_lastname = 'TESTWS';
+    $users->save();
+    
+    
+     echo '<br/> UPDATED ';
+    $users = Profile::find('756');
+    $users->user_name = 'terwessss';
+    $users->user_password = '78544545121';
+    $users->user_email ='tetes@ma.com' ;
+    $users->user_regdate ='2016' ;
+    $users->user_ip ='10.10.10.24' ;
+    $users->user_firstname = 'TESTWEA2';
+    $users->user_lastname = 'TESTWS2';
+    $users->save();
+    
+    
+    echo '<br/> DELETED ';
+    $user = Profile::find(756);
+    $user->delete();
+    
+
+    
+    /***
+     * Print query in laravel
+     */
+    $users = DB::table('icon_users')->select('*')->where('user_id','>','10')->toSql();
+	dd($users);
