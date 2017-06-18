@@ -1,0 +1,497 @@
+
+laravel
+codeignitor
+php
+jquery
+mysql
+javascript
+botstrap
+git
+
+php array
+
+
+
+codeignitor
+
+1 - how to access congig variable
+ Ans - $this->config->item('varname');
+
+
+2 - how to load model 
+
+ans - $this->load->model('User');
+
+
+3 - how to connect multiple database
+ans 
+$db1= $this->load->database('xyx',true);
+$db2= $this->load->database('test',true);
+
+
+4 - how to load multiple library
+ans - $this->load->libarary(array('xxx','yyy'));
+
+
+5 - how to unset session data
+ans - $this->session->unset_userdata('name');
+
+6 - how to print database query
+ans - $this->db->lastquery();
+
+7 - How to create hooks in codeignitor and where 
+ans - application/config/hooks.php
+  $hook['precontroller']
+ =  array(
+     'class'=>'Myclass',
+     'function'=>'Myfunction',
+     'filename'=>'Myclass.php',
+     'filepath'=>'hooks',
+     'params'=>arra('param1','param2')
+);
+
+
+8 - different type of hook
+ans - 
+
+pre_conttroller
+post_controller
+pre_system
+post_system
+
+
+9 - how load helper
+ ans - $this->load->helper('url');
+
+
+10 what is need to make a route in codeig?
+ans - bzc seo point of view need more user visit count
+      hide url elemnt like function,controoler name
+
+
+11 what is xss and how prevent 
+
+ans- xss stand for cross site script that hack post and cookies data
+so we use xss_clean () function for prevent malicious attack
+
+
+
+ 
+12 inhibitor in codeignitor
+
+ans - it is class of error handling 
+
+
+
+13 default url patternn
+
+and 
+    www.abc.com/user/67
+ or abc.com/controller/method/parameter1/parameter2
+
+
+like $route['user/(:any)'] = 'UserController/detail/$1';
+    
+
+
+14 how to pass optional param in route
+$route['user/(:any)/(:any)/(:any)'] = 'UserController/detail/$1/$2/$3';
+
+in conroller deatil($id=null,$name=null,$type=null)
+
+
+15 how to prevent from csrf
+
+ans -add hidden token feild in each form 
+
+16 Enable csrf protecion
+
+ans - application/config.php
+   $['csrf_protecion']= true
+
+
+
+17 diif bet set_flashdata and set_userdata
+
+ans - set_userdata -means adding data in session
+      set_flashdata - means adding session data that will only be aviable in next request
+      ans automatically clear
+
+
+
+
+
+PHP**************************************************************************************
+
+1 diff bet include and require
+
+Ans- require display fatal error and halt the page execution 
+ include display warning and  page execution is continue  	
+
+
+2 diff b/t split and explode
+
+ ans - split - it split string to array using regular exp.
+       explode - explode string to array using string 
+
+3 mysql_real_escape_string 
+
+ans -used for escape special char from string for use in sql statemnt.
+
+
+
+4 how to atop page execution in php
+
+ans - exit()
+
+
+5 how many param exist in mail function
+
+ans mail($to,$subject,$body,$header);
+
+
+6 Is multiple inheritance supported in PHP?
+
+ans PHP includes only single inheritance
+
+
+
+7 What is the meaning of a final class and a final method
+ans - Final class means that this class cannot be extended and a final method cannot be overrided.
+
+
+8 How is it possible to set an infinite execution time for PHP script
+ans - The set_time_limit(0) added at the beginning of a script sets to infinite the time of execution 
+
+
+9 How is it possible to know the number of rows returned in result set
+ans -The function mysql_num_rows() returns the number of rows in a result set.
+
+
+10 How can we automatically escape incoming data
+ans - We have to enable the Magic quotes entry in the configuration file of PHP.
+
+
+11 what is the definition of a session
+ans -A session is a logical object enabling us to preserve temporary data across multiple PHP pages.
+
+
+12 How can we change the maximum size of the files to be uploaded
+ans - upload_max_filesize in php.ini
+
+13 What is the purpose of _FILE_ constant
+ans The full path and filename of the file
+
+14 What is the purpose of _CLASS_ constant
+ans - The class name
+
+15 What is the purpose of _METHOD_ constant
+ans -The class method name.
+
+16 What is the purpse $_PHP_SELF variable?
+ans The PHP default variable $_PHP_SELF is used for the PHP script name 
+
+
+17 How convert xml to array in php
+ans - 
+$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+$json = json_encode($xml);
+$array = json_decode($json,TRUE);
+
+
+18 what are new feature in php7
+ans -
+Zend Engine 3 performance improvements 
+added Closure::call()
+coalesce) operator
+return type declarations
+Spaceship operator
+
+19 What is htaccess? Why do we use this and where?
+ans -.htaccess files are used to change the functionality and features of Apache web server.
+
+-> htaccess file is used for url rewrite.
+–> It is used to make the site password protected.
+–> .htaccess file can restrict some ip addresses
+
+
+20 What are magic methods?
+
+ans -
+Magic methods are member functions that are available to all the instance of class. 
+All magic methods need to be declared as public
+Various Magic Methods used in PHP 5 are: 
+__construct() __destruct() __set() __get() __call() __toString() __sleep() __wakeup() __isset() __unset() __autoload() __clone().
+
+
+
+21 How many data types are there in PHP
+ans 
+
+Scalar types
+Compound types
+Special types
+
+
+22 name of five array function 
+ans
+count()
+is_array
+in_array
+array_search
+array_sum
+array_reverse()
+
+
+23 name of five string function
+
+ans 
+strtolower()
+strtoupper()
+ucfirst()
+lcfirst()
+strrev()
+strlen()
+
+24 Can we send ajax request to other domain?
+ans No
+
+25 diff b/t array_merge and array_combine
+ans 
+array_combine give an array by combining two arrays($keyArray, $valueArray) 
+and both $keyArray & $valueArray must have same number of elements. 
+
+array_merge gives an array by merging two array ($array1, $array2) 
+and both can have different number of elements.
+
+
+
+
+
+
+PHP OOPS *************************************************************************
+
+
+1) what is oops
+
+ans - Object-oriented programming (OOP) is a programming language model organized 
+around objects rather than actions;
+
+
+2)What is Polymorphism?
+ans -
+It is simply "One thing, can use in different forms"
+For example, One car (class) can extend two classes (hond & Alta)
+
+
+3)How to load classes in PHP.
+ans- spl_autoload_register('kumar');
+
+
+4) What happen, If constructor is defined as private OR protected.
+ans - display fatal error when create object. 
+
+5) What happen, If New-Style constructor & old-style constructor 
+are defined. Which one will be called.
+
+Ans -New-Style constructor will called. But if New-Style constructor is missing, 
+old style constructor will called. 
+
+
+
+6) What are different visibility of method/property?
+ans 
+Public: Can be accessed from same class method, child class and from outside of class.
+Protected : Can be accessed from same class method, child class.
+Private: Can be accessed from same class method only. 
+
+7)What is Scope Resolution Operator?
+
+ans The Scope Resolution Operator (also called Paamayim Nekudotayim) is double colon that 
+allows access to static, constant
+
+8)What is Static Keyword in PHP?
+
+ans 
+If we declare a Method or Class Property as static, 
+then we can access that without use of instantiation of the class.
+
+Static properties cannot be accessed through the object
+
+class StaticClass
+{
+    public static $staticValue = 'foo';
+
+    public function staticValue() {
+        return self::$my_static;
+    }
+}
+echo StaticClass::$staticValue;
+
+
+
+9) What is Abstraction in PHP
+ans 
+Abstraction are defined using the keyword abstract .
+Classes defined as abstract may not be instantiated (create object).
+Any class that contains one abstract method must also be declare as abstract. 
+
+
+
+
+10)What is Interface in PHP?
+
+ans
+Interfaces are defined using the interface keyword.
+All methods declared in an interface must be public.
+To extend the interface class, implements operator is used.
+All methods in the interface must be implemented within a child class;
+
+
+11)What is Traits in PHP?
+Ans
+Traits are a mechanism for code reuse in single inheritance.
+
+Multiple Traits can be inserted into a class by listing them 
+in the use statement, separated by commas(,).
+trait traitSample {
+    function getReturnType() {
+        echo "TraitSample:";
+    }    
+}
+class Class1 {
+    use traitSample;   
+}
+
+
+
+12)What is Final Keyword in PHP?
+ans
+If the class itself is being defined final then it cannot be extended.
+If the function itself is being defined final then it cannot be extended. 
+
+
+
+13) what is encapsulation
+ans - 
+The wrapping of data and function together in a 
+single unit(class) is called encapsulation.
+
+14 ) default visibilty of function and variable ?
+
+ans public
+
+
+
+
+
+
+MYSQL *************************************************************************************
+
+1) What is the default port for MySQL Server?
+
+
+ans 3306
+
+
+
+
+2) how many joins in mysql
+ Inner Join returns the rows if there is at least one match in both the tables
+ Left Join returns all the rows form the left table even if there is no match in the right table. 
+ Right Join returns all the rows from the right table even if no matches exist in left table.
+
+
+3)how to combine two column 
+ans use concat (fname,'',lname) function
+
+4)difference between primary key and candidate key?
+ans 
+
+Primary key in MySQL is use to identify every row of a table in unique manner
+canditate key is one of primary key that can be used to refrence foregn key
+
+
+
+5)What are the TRIGGERS that can be used in MySQL tables?
+ans
+BEFORE INSERT
+AFTER INSERT
+BEFORE UPDATE
+ AFTER UPDATE
+ BEFORE DELETE
+ AFTER DELETE
+
+
+6)What is the difference between LIKE and REGEXP operators in MySQL?
+ans 
+ LIKE is denoted using the % sign.
+REGEXP is as use expression like SELECT * FROM user WHERE username REGEXP “^NAME”;
+
+
+7)How to resolve the problem of data disk that is full?
+ans
+
+When the data disk is full and overloaded the way out is 
+to create and soft link and move the .frm as well as the .idb files into that link location.
+
+8)What is the difference between primary key and unique key?
+While both are used to enforce uniqueness of the column defined but primary key would create a 
+clustered index whereas unique key would create non-clustered
+ index on the column. 
+Primary key does not allow ‘NULL’ but unique key allows it. 
+
+
+9)What are federated tables?
+Federated tables which allow access to the tables located on other databases on other servers.
+
+
+10)What is a trigger in MySQL?
+
+A trigger is a set of codes that executes in response to some events.
+
+
+11)How to display 3rd highest salary from a table in a MySQL query?
+select distinct(salary) from employee order by salary desc limit 2,1  
+
+
+
+12)What is the query to display top 20 rows?
+SELECT * FROM table_name LIMIT 0,20;  
+
+
+
+13)
+
+
+
+
+
+
+
+
+
+
+Shakkar
+chai pati
+namak
+rai
+tel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
